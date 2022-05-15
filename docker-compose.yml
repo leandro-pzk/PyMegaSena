@@ -5,6 +5,7 @@ services:
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data
+    restart: always
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
       - POSTGRES_DB=postgres
