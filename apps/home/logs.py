@@ -20,7 +20,7 @@ class GerarLogs:
                 i['usuario'] = request.user.username
 
             data = json.dumps(list(palpite_arquivo), default=str)
-            logs = requests.post('http://172.18.0.5:8001/api/v1/logs/arquivo', json=data)
+            logs = requests.post('http://pymegasenalogs-master-web-1:8001/api/v1/logs/arquivo', json=data)
             print(logs)
         except:
             print(logs)
@@ -41,6 +41,6 @@ class GerarLogs:
                 i['usuario'] = request.user.username
 
             data = json.dumps(list(palpite), default=str)
-            logs = requests.post('http://172.18.0.5:8001/api/v1/logs/palpite', json=data)
+            logs = requests.post('http://pymegasenalogs-master-web-1:8001/api/v1/logs/palpite', json=data)
         except:
             print('logs')
