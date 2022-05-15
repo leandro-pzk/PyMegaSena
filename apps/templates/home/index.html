@@ -27,11 +27,10 @@
               <a href="#" class="btn btn-sm btn-neutral">Filters</a>
             </div>
           </div>
-          <!-- Card stats -->
+          
           <div class="row">
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-3 col-md-6 d-none">
               <div class="card card-stats">
-                <!-- Card body -->
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
@@ -51,9 +50,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-3 col-md-6 d-none">
               <div class="card card-stats">
-                <!-- Card body -->
+                
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
@@ -73,9 +72,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-3 col-md-6 d-none">
               <div class="card card-stats">
-                <!-- Card body -->
+                
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
@@ -95,9 +94,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-md-6">
+            <div class="col-xl-3 col-md-6 d-none">
               <div class="card card-stats">
-                <!-- Card body -->
+                
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
@@ -249,7 +248,7 @@
                 </div>
               </div>
             </div>
-            <div class="table-responsive">
+            <!--<div class="table-responsive">
               <table class="table align-items-center table-flush" id="example">
                 <thead class="thead-light">
                   <tr>
@@ -276,16 +275,16 @@
                   </tr>
                 
                 </tbody>
-				<tfoot class="thead-light">
-                  <tr>
-                    <th scope="col">Concurso</th>
-                    <th scope="col">Data Apuração</th>
-                    <th scope="col">Dezenas Sorteadas</th>
-                    <th scope="col">Local de Sorteio</th>
-                  </tr>
+				          <tfoot class="thead-light">
+                    <tr>
+                      <th scope="col">Concurso</th>
+                      <th scope="col">Data Apuração</th>
+                      <th scope="col">Dezenas Sorteadas</th>
+                      <th scope="col">Local de Sorteio</th>
+                    </tr>
                 </tfoot>
               </table>
-            </div>
+            </div>-->
           </div>
         </div>
         
@@ -351,7 +350,7 @@ $(document).ready(function() {
 	$(function(){
 		$("#uploader").initUploader({
 			destination:"{% url 'ajax-palpite' %}",
-			selectOpts:{BL:'BL', CE:'CE'},
+			selectOpts: false,
 			showDescription: false,
 		});
 	});
