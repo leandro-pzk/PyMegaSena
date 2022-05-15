@@ -1,0 +1,362 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">PyLoteria</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Mega Python Sena</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+              <a href="#" class="btn btn-sm btn-neutral">New</a>
+              <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+            </div>
+          </div>
+          <!-- Card stats -->
+          <div class="row">
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Total traffic</h5>
+                      <span class="h2 font-weight-bold mb-0">350,897</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                        <i class="ni ni-active-40"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last month</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                      <span class="h2 font-weight-bold mb-0">2,356</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                        <i class="ni ni-chart-pie-35"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last month</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                      <span class="h2 font-weight-bold mb-0">924</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                        <i class="ni ni-money-coins"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last month</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                      <span class="h2 font-weight-bold mb-0">49,65%</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                        <i class="ni ni-chart-bar-32"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last month</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Ultimo Sorteio: Concurso {{mega.numero}} ({{mega.dataApuracao}})</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                </div>
+              </div>
+            </div>
+			<table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col" colspan="1">RESULTADO</th>
+                    <th scope="col" colspan="1">LOCAL DE SORTEIO</th>
+                    <th scope="col" colspan="1">Dezenas Sorteadas</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {% if mega.acumulado %}
+                    <th scope="row"><i class="fas fa-arrow-up text-success mr-3"></i> ACUMULOU!! </th>
+                    {% else %}
+                    <th scope="row"><i class="fas fa-arrow-up text-success mr-3"></i> SAIUU!! </th>
+                    {% endif %}
+                    <th scope="row">{{mega.localSorteio}} - {{mega.nomeMunicipioUFSorteio}}</th>
+                    <th>
+                      {% for i in mega.listaDezenas %}
+                      <button type="button" class="btn  btn-icon btn-success">{{i}}</button>
+                      {% endfor %}
+                    </th>
+                    
+                  </tr>
+                </tbody>
+				
+					
+				
+            </table>
+          </div>
+        </div>
+      </div>
+	  <div class="row">
+		  <div class="col-md-4">
+			  <div class="card bg-gradient-primary border-0">
+
+				<div class="card-body">
+				  <div class="row">
+					<div class="col">
+					  <h5 class="card-title text-uppercase text-muted mb-0 text-white">6 acertos</h5>
+            {% load humanize %}
+					  <span class="h2 font-weight-bold mb-0 text-white float-right">R$ {{ mega.listaRateioPremio.0.valorPremio|intcomma}}</span><br>
+					  <div class="progress progress-xs mt-3 mb-0">
+						<div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 1%;"></div>
+					  </div>
+					</div>
+					
+				  </div>
+				  <p class="mt-3 mb-0 text-sm">
+					<a href="#!" class="text-nowrap text-white font-weight-600">{{mega.listaRateioPremio.0.numeroDeGanhadores}} apostas ganhadoras</a>
+				  </p>
+				</div>
+			  </div>
+		  </div>
+		  
+		  <div class="col-md-4">
+			  <div class="card bg-gradient-primary border-0">
+
+				<div class="card-body">
+				  <div class="row">
+					<div class="col">
+					  <h5 class="card-title text-uppercase text-muted mb-0 text-white">5 acertos</h5>
+					  <span class="h2 font-weight-bold mb-0 text-white float-right">R$ {{ mega.listaRateioPremio.1.valorPremio|intcomma}}</span><br>
+					  <div class="progress progress-xs mt-3 mb-0">
+						<div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"></div>
+					  </div>
+					</div>
+					
+				  </div>
+				  <p class="mt-3 mb-0 text-sm">
+					<a href="#!" class="text-nowrap text-white font-weight-600">{{mega.listaRateioPremio.1.numeroDeGanhadores}} apostas ganhadoras</a>
+				  </p>
+				</div>
+			  </div>
+		  </div>
+		  <div class="col-md-4">
+			  <div class="card bg-gradient-primary border-0">
+				<div class="card-body">
+				  <div class="row">
+					<div class="col">
+					  <h5 class="card-title text-uppercase text-muted mb-0 text-white">4 acertos</h5>
+					  <span class="h2 font-weight-bold mb-0 text-white float-right">R$ {{ mega.listaRateioPremio.2.valorPremio|intcomma}}</span><br>
+					  <div class="progress progress-xs mt-3 mb-0">
+						<div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
+					  </div>
+					</div>
+					
+				  </div>
+				  <p class="mt-3 mb-0 text-sm">
+					<a href="#!" class="text-nowrap text-white font-weight-600">{{mega.listaRateioPremio.2.numeroDeGanhadores}} apostas ganhadoras</a>
+				  </p>
+				</div>
+			  </div>
+		  </div>
+	  </div>
+     <div class="row">
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Palpites</h3>
+                </div>
+                <div class="col text-right">
+                  
+                    <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Importar Arquivo
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush" id="example">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Concurso</th>
+                    <th scope="col">Data Apuração</th>
+                    <th scope="col">Dezenas Sorteadas</th>
+                    <th scope="col">Local de Sorteio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      /argon/
+                    </th>
+                    <td>
+                      4,569
+                    </td>
+                    <td>
+                      340
+                    </td>
+                    <td>
+                      <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+                    </td>
+                  </tr>
+                
+                </tbody>
+				<tfoot class="thead-light">
+                  <tr>
+                    <th scope="col">Concurso</th>
+                    <th scope="col">Data Apuração</th>
+                    <th scope="col">Dezenas Sorteadas</th>
+                    <th scope="col">Local de Sorteio</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Novo Palpite</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="uploader"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% include "includes/footer.html" %}
+
+    </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+  <script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+
+  <script src="/static/assets/js/components/vendor/data-api-custom.js"></script>
+  <script src="/static/assets/js/components/vendor/jquery.dataTables.min.js"></script>
+
+  <script src="/static/assets/js/components/fileUploader/5x5jqpi.min.js"></script>
+
+<script>
+$(document).ready(function() {
+
+    $('#example_previous').addClass('btn');
+    $('#example_next').addClass('btn');
+    $('#example_length > label > select').addClass('form-control');
+
+});
+</script>
+<script>
+  $(document).ready(function(){
+   $('#buscar').change(function(){
+        this.form.submit();
+    });
+});
+</script>
+
+<script>
+
+	$(function(){
+		$("#uploader").initUploader({
+			destination:"{% url 'ajax-palpite' %}",
+			selectOpts:{BL:'BL', CE:'CE'},
+			showDescription: false,
+		});
+	});
+
+</script>
+
+
+{% endblock javascripts %}

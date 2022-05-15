@@ -1,0 +1,147 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">PyLoteria</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="#">Administrar</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Validar Palpites</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+          <!-- Card stats -->
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Ultimo Sorteio: Concurso {{mega.numero}} ({{mega.dataApuracao}})</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                </div>
+              </div>
+            </div>
+            <table id="example3" class="table align-items-center table-flush">
+              <thead>
+                  <tr>
+                      <th>Data do Palpite</th>
+                      <th>Dezenas</th>
+                      
+                  </tr>
+              </thead>
+              
+          </table>
+            <!--<table id="example" class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col" colspan="1">RESULTADO</th>
+                    <th scope="col" colspan="1">LOCAL DE SORTEIO</th>
+                    <th scope="col" colspan="1">Dezenas Sorteadas</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><i class="fas fa-arrow-up text-success mr-3"></i> {{palpites.fields}}</th>
+                  </tr>
+                </tbody>
+            </table>-->
+          </div>
+        </div>
+      </div>
+	  
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Novo Palpite</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="uploader"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% include "includes/footer.html" %}
+
+    </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+  <script src="/static/assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+
+  <script src="/static/assets/js/components/vendor/data-api-custom.js"></script>
+  <script src="/static/assets/js/components/vendor/jquery.dataTables.min.js"></script>
+
+  <script src="/static/assets/js/components/fileUploader/5x5jqpi.min.js"></script>
+
+<script>
+$(document).ready(function() {
+
+    $('#example_previous').addClass('btn');
+    $('#example_next').addClass('btn');
+    $('#example_length > label > select').addClass('form-control');
+
+});
+</script>
+
+
+<script>
+  var json= $.parseJSON( '{{data | safe}}' );
+  var dataSet = []
+  $.each(json, function(i, item) {
+    delete json[i].model;
+    delete json[i].pk;
+    dataSet.push([json[i].fields.palp_dt_criacao, json[i].fields.palp_dezenas])
+  });
+
+$(document).ready(function () {
+  $('#example3').DataTable({
+    data: dataSet,
+    "ordering": false,
+    columns: [
+        { title: 'Data do Palpite' },
+        { title: 'Dezenas' },
+    ], 
+  });
+});
+
+</script>
+
+
+{% endblock javascripts %}
